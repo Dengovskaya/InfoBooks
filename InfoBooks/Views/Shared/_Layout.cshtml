@@ -6,6 +6,10 @@
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+        @Scripts.Render("~/bundles/jquery")
+
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script src="~/Scripts/angular.js"></script>
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -16,12 +20,12 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
-                    <li>@Html.ActionLink("API", "Index", "Help", new { area = "" }, null)</li>
+                    <li>@Ajax.ActionLink("Главная страница", "Index", "Home", new AjaxOptions { UpdateTargetId = "book-info" })</li>
+                    <li>@Ajax.ActionLink("Книги", "GetBooks", "Home", new AjaxOptions { UpdateTargetId = "book-info" })</li>
+                    <li>@Ajax.ActionLink("Авторы", "GetAuthors", "Home", new AjaxOptions { UpdateTargetId = "book-info" })</li>
                 </ul>
             </div>
         </div>
@@ -29,12 +33,12 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
+        @*<footer>
+    <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>*@
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
+    
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>

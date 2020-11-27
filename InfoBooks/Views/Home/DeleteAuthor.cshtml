@@ -1,0 +1,26 @@
+﻿@model InfoBooks.Models.Author
+
+<h3>Вы хорошо подумали над своим решением?</h3>
+<div>
+    <h4>Удаление автора</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AuthorName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AuthorName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Удалить" class="btn btn-default" /> |
+            @Html.ActionLink("Перейти на главную", "Index")
+        </div>
+    }
+</div>
